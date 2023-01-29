@@ -1,0 +1,26 @@
+library ieee;
+use ieee.std_logic_1164.all; 
+
+entity TheWalkingStick IS
+port (switch , ht , o : IN std_logic;
+		B , M : OUT std_logic);
+end TheWalkingStick;
+
+architecture arch of TheWalkingStick IS
+begin
+process (ht,o,switch)
+begin
+if (switch = '1') THEN
+	if (ht = '0') THEN
+		B <= '1';
+		M <= '0';
+	else
+		M <= NOT o;
+		B <= '0';
+	end if;
+else
+	B <= '0';
+	M <= '0';
+end if;
+end process;
+end arch;
